@@ -1,4 +1,4 @@
-from db.models import Investor
+from db.models import Investor, Wallet
 from django.contrib.auth.models import User
 
 def create_user(name, last_name, phone, email, password):
@@ -12,4 +12,7 @@ def create_user(name, last_name, phone, email, password):
 
     investor = Investor(name=name, last_name=last_name, phone=phone, user=user)
     investor.save()
+
+    Wallet(investor=investor).save()
+    
     return investor
