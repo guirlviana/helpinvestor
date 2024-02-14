@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from api import investor_api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('investor/', investor_api.create_user)
 ]
