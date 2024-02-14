@@ -1,5 +1,5 @@
 from django.test import TestCase
-from core.usecases.investor_usecase import create_user
+from core.usecases.investor_usecase import create_investor
 
 
 
@@ -13,7 +13,7 @@ class CreateUserTests(TestCase):
             'password': 'j0hND000e'
         }
         
-        new_investor = create_user(**data)
+        new_investor = create_investor(**data)
 
         self.assertEqual(data['name'], new_investor.name)
         self.assertEqual(data['last_name'], new_investor.last_name)

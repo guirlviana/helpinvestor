@@ -14,7 +14,7 @@ def create_user(request):
         return JsonResponse(investor.errors, status=400)
     
     validated_data = investor.validated_data
-    new_investor = investor_usecase.create_user(
+    new_investor = investor_usecase.create_investor(
         name=validated_data['name'],
         last_name=validated_data['last_name'],
         phone=validated_data['phone'],
