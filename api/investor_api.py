@@ -21,4 +21,5 @@ def create_user(request):
         email=validated_data['email'],
         password=validated_data['password']
     )
+    
     return JsonResponse({'response': f'{new_investor.name}, your investor account has been created'}, status=201)
