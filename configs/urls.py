@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from api import investor_api
+from api import investor_api, stock_api
+from rest_framework.authtoken import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('investor/', investor_api.create_user)
+    path('api-token-auth/', views.obtain_auth_token),
+    path('investor/', investor_api.create_user),
+    path('stock/', stock_api.create_stock)
 ]
