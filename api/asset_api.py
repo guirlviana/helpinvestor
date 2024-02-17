@@ -18,7 +18,12 @@ def create_asset(request):
     if not asset.is_valid():
         return JsonResponse(asset.errors, status=400)
     
-    new_asset = asset_usecase.create_asset(asset.validated_data['wallet_id'], asset.validated_data['symbol'])
+    new_asset = asset_usecase.create_asset(
+        wallet_id=asset.validated_data['wallet_id'], 
+        symbol=asset.validated_data['symbol'],
+        buy_price=asset.validated_data['buy_price'],
+        sale_price=asset.validated_data['sale_price'],
+    )
 
     return JsonResponse({'response': f'Your asset: {new_asset.symbol} has been created'}, status=201)
 
