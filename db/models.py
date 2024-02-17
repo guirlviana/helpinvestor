@@ -19,4 +19,6 @@ class Wallet(models.Model):
 class Assets(models.Model):
     wallet = models.ForeignKey(Wallet, on_delete=models.DO_NOTHING)
     symbol = models.CharField(max_length=8)
+    buy_price = models.DecimalField(decimal_places=2, max_digits=5, null=False, blank=False)
+    sale_price = models.DecimalField(decimal_places=2, max_digits=5, null=False, blank=False)
     is_deleted = models.BooleanField(default=False)
