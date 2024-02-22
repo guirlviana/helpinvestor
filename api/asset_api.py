@@ -1,6 +1,6 @@
 from rest_framework.decorators import authentication_classes, permission_classes, api_view
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
 from core.usecases import asset_usecase
@@ -27,3 +27,8 @@ def create_asset(request):
 
     return JsonResponse({'response': f'Your asset: {new_asset.symbol} has been created'}, status=201)
 
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated, IsAdminUser])
+def get_share_prices(request):
+    return JsonResponse({'response': 'welcome admin!'}, status=200)
