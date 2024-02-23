@@ -6,6 +6,7 @@ from rest_framework.parsers import JSONParser
 from core.usecases import asset_usecase
 from core.serializers.asset_serializer import AssetSerializer
 
+
 @api_view(['POST'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
@@ -31,4 +32,6 @@ def create_asset(request):
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated, IsAdminUser])
 def get_share_prices(request):
-    return JsonResponse({'response': 'welcome admin!'}, status=200)
+    alerts = asset_usecase.get_assets_on_target_prices()
+
+    return JsonResponse({'response': alerts}, status=200)
