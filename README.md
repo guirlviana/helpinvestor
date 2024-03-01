@@ -60,11 +60,6 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-How to clone your project
-
-```bash
-python3 -m venv venv
-```
 
 <h3>Config .env variables</h2>
 
