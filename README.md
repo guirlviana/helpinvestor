@@ -24,8 +24,21 @@ When the price targets<br> we going to send you a notification</b>
 
 <h2 id="architecture">🏠 Architecture</h2>
 
-<p>This api was built using clean architecture, TDD methodology.</p>
+<p>This api was built using clean architecture, TDD methodology, SOLID and clean code.</p>
 
+```
+- helpinvestor/
+  - api/
+    - *exposes the application to the internet*
+  - configs/
+    - *configs for project*
+  - core/
+    - *contains the business logic*
+  - db/
+    - *our database models*
+  - services/
+    - *connects with third party system*
+```
 <h2 id="started">⏲️ Getting started</h2>
 
 The app are running with `Python 3.10.12`
