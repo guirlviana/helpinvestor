@@ -25,20 +25,24 @@ def get_assets_on_target_prices():
     users_to_notify = []
     for symbol, targets in assets_by_symbol.items():
         quote_price = stock_market_api.get_live_quote_price(symbol)
-        if quote_price:
-            for target in targets:
-                if Decimal(quote_price) >= target['sale_price']:
-                    # opportunity to earn sealling
-                    users_to_notify.append({
-                        'message': f'{symbol}, reached: R${Decimal(quote_price)} Your alert was set: SALE with {target["sale_price"]} or high',
-                        'phone': target['phone'],
-                    })
-                
-                if Decimal(quote_price) <= target['buy_price']:
-                    # opportunity to earn buying
-                    users_to_notify.append({
-                        'message': f'{symbol}, reached: R${Decimal(quote_price)} Your alert was set: BUY with {target["buy_price"]} or lower',
-                        'phone': target['phone'],
-                    })
+        if not quote_price:
+            continue
+        
+        for target in targets:
+            if Decimal(quote_price) >= target['sale_price']:
+                # opportunity to earn sealling
+                users_to_notify.append({
+                    'message': f'{symbol}, reached: R${Decimal(quote_price)} Your alert was set: SALE with {target["sale_price"]} or high',
+                    'phone': target['phone'],
+                })
+                continue
+            
+            if Decimal(quote_price) <= target['buy_price']:
+                # opportunity to earn buying
+                users_to_notify.append({
+                    'message': f'{symbol}, reached: R${Decimal(quote_price)} Your alert was set: BUY with {target["buy_price"]} or lower',
+                    'phone': target['phone'],
+                })
+                continue
     
     return users_to_notify
