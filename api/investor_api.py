@@ -14,12 +14,15 @@ def create_user(request):
         return JsonResponse(investor.errors, status=400)
     
     validated_data = investor.validated_data
-    new_investor = investor_usecase.create_investor(
-        name=validated_data['name'],
-        last_name=validated_data['last_name'],
-        phone=validated_data['phone'],
-        email=validated_data['email'],
-        password=validated_data['password']
-    )
+    try:
+        new_investor = investor_usecase.create_investor(
+            name=validated_data['name'],
+            last_name=validated_data['last_name'],
+            phone=validated_data['phone'],
+            email=validated_data['email'],
+            password=validated_data['password']
+        )
+    except Exception as e:
+        return JsonResponse({'response': str(e)}, status=422)
     
     return JsonResponse({'response': f'{new_investor.name}, your investor account has been created'}, status=201)
