@@ -3,7 +3,12 @@ from decimal import Decimal
 from db.models import Asset
 from services import stock_market_api
 
+AVAILABLE_SYMBOLS = {'ITSA4', 'TAEE4', 'BBSE3'}
+
 def create_asset(wallet_id, symbol, buy_price, sale_price):
+    if symbol not in AVAILABLE_SYMBOLS:
+        raise Exception(f'Symbol: {symbol} not valid, options: {AVAILABLE_SYMBOLS}')
+    
     asset = Asset(symbol=symbol, wallet_id=wallet_id, buy_price=buy_price, sale_price=sale_price)
     asset.save()
 
