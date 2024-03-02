@@ -4,7 +4,7 @@
  <a href="#technologies">Technologies</a> • 
 <a href="#architecture">Architecture</a> •
  <a href="#started">Getting Started</a> • 
- <a href="#future">The future</a> 
+ <a href="#future">Features, suggestions and the future</a> 
 </p>
 
 <p align="center">
@@ -86,11 +86,20 @@ ASSETS_API_KEY = '123123123' # get your key here: https://www.alphavantage.co/
 python manage.py runserver
 ```
 
-<h2 id="future">🚀 The future</h2>
+<h2 id="future">🚀 Features, suggestions and the future</h2>
 <p>This api is alive, it will be update with new features, and suggestions:</p>
 
-- Implementing update's
-- Test Coverage 100%
-- Create a CI/CD for deploy
+| desc.           | status |
+|-----------------|--------|
+| Create Investor | Done   |
+| Create Asset    | Done   |
+| Task for quotes | Done   |
+| Push notifications | To-do |
+| Phone Validator | To-do  |
+| Update Investor | To-do  |
+| Update Asset | To-do  |
+| Test coverage 100% | To-do  |
+| CI/CD for deploy | To-do  |
+
 
 Do you want register a new feature or a bug? open a `pull-request` or contact me at [gvianadev.com](https://gvianadev.com)
