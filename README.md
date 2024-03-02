@@ -4,7 +4,7 @@
  <a href="#technologies">Technologies</a> • 
 <a href="#architecture">Architecture</a> •
  <a href="#started">Getting Started</a> • 
- <a href="#future">The future</a> 
+ <a href="#future">Features, suggestions and the future</a> 
 </p>
 
 <p align="center">
@@ -24,8 +24,21 @@ When the price targets<br> we going to send you a notification</b>
 
 <h2 id="architecture">🏠 Architecture</h2>
 
-<p>This api was built using clean architecture, TDD methodology.</p>
+<p>This api was built using clean architecture, TDD methodology, SOLID and clean code.</p>
 
+```
+- helpinvestor/
+  - api/
+    - *exposes the application to the internet*
+  - configs/
+    - *configs for project*
+  - core/
+    - *contains the business logic*
+  - db/
+    - *our database models*
+  - services/
+    - *connects with third party system*
+```
 <h2 id="started">⏲️ Getting started</h2>
 
 The app are running with `Python 3.10.12`
@@ -46,11 +59,6 @@ source venv/bin/activate
 
 ```bash
 pip install -r requirements.txt
-```
-How to clone your project
-
-```bash
-python3 -m venv venv
 ```
 
 <h3>Config .env variables</h2>
@@ -78,11 +86,20 @@ ASSETS_API_KEY = '123123123' # get your key here: https://www.alphavantage.co/
 python manage.py runserver
 ```
 
-<h2 id="future">🚀 The future</h2>
+<h2 id="future">🚀 Features, suggestions and the future</h2>
 <p>This api is alive, it will be update with new features, and suggestions:</p>
 
-- Implementing update's
-- Test Coverage 100%
-- Create a CI/CD for deploy
+| desc.           | status |
+|-----------------|--------|
+| Create Investor | Done   |
+| Create Asset    | Done   |
+| Task for quotes | Done   |
+| Push notifications | To-do |
+| Phone Validator | To-do  |
+| Update Investor | To-do  |
+| Update Asset | To-do  |
+| Test coverage 100% | To-do  |
+| CI/CD for deploy | To-do  |
+
 
 Do you want register a new feature or a bug? open a `pull-request` or contact me at [gvianadev.com](https://gvianadev.com)
