@@ -20,3 +20,9 @@ def task_send_quotes_in_sms():
     if not notifications:
         return
     
+    for notification in notifications:
+        __mock_send_sms(notification['phone'], notification['message'])
+
+
+def __mock_send_sms(phone, message):
+    print(f'To: {phone}. message: {message}')
