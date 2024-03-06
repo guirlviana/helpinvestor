@@ -4,7 +4,8 @@
  <a href="#technologies">Technologies</a> • 
 <a href="#architecture">Architecture</a> •
  <a href="#started">Getting Started</a> • 
- <a href="#future">Features, suggestions and the future</a> 
+ <a href="#future">Features, suggestions and the future</a> •
+ <a href="#warnings">Warnings</a>
 </p>
 
 <p align="center">
@@ -19,6 +20,7 @@ When the price targets<br> we going to send you a notification</b>
 - AWS Lambda
 - AWS EC2
 - AWS RDS
+- AWS SNS
 - PostgresSQL
 - pytest
 
@@ -103,3 +105,11 @@ python manage.py runserver
 
 
 Do you want register a new feature or a bug? open a `pull-request` or contact me at [gvianadev.com](https://gvianadev.com)
+
+<h2 id="warnings">⚠️ Warnings</h2>
+The app was built using a free api and it has limits, in production you only can create assets with those symbols: ITSA4, TAEE4, BBSE3
+<p>After registration, contact me to add your phone in trusted phones on AWS, we are now available as <a href="https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html" target="_blank">aws sandbox</a> and cannot add phone numbers without verification code</p>
+
+<p>In another moment we going to give more time to these attention points.</p>
+
+<p>If you want to deploy it, feel free to change the values</p>
