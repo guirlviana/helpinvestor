@@ -19,6 +19,7 @@ When the price targets<br> we going to send you a notification</b>
 - AWS Lambda
 - AWS EC2
 - AWS RDS
+- AWS SNS
 - PostgresSQL
 - pytest
 
