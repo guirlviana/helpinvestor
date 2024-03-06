@@ -15,7 +15,7 @@ def task_send_quotes_in_sms():
     token = response['token']
 
     headers = {'Authorization': f'Token {token}'}
-    response = requests.get(f'{settings.APP_URL}/get-share-prices/')
+    response = requests.get(f'{settings.APP_URL}/get-share-prices/', headers=headers)
     notifications = response['response']
     if not notifications:
         return
