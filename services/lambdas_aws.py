@@ -13,3 +13,6 @@ def task_send_quotes_in_sms():
     
     response = response.json()
     token = response['token']
+
+    headers = {'Authorization': f'Token {token}'}
+    requests.get(f'{settings.APP_URL}/get-share-prices/')
