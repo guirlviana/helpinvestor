@@ -8,3 +8,4 @@ gunicorn-error-log
 __pycache__
 services/task_send_quote_prices_sms/*
 !services/task_send_quote_prices_sms/*.py
+task_send_quote_prices_sms.zip
