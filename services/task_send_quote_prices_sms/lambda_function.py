@@ -2,17 +2,38 @@ from django.conf import settings
 import requests
 import os
 
-def task_send_quotes_in_sms():
+def lambda_handler(event, context):
+    sns = boto3.client('sns', region_name='us-east-1')
     token = __authenticate_as_admin()
     if not token:
         return
-
+    
     notifications = __get_quote_prices_notifications(token)
     if not notifications:
         return
     
     for notification in notifications:
-        __mock_send_sms(notification['phone'], notification['message'])
+        __send_sms(sns, notification['phone'], notification['message'])
+
+
+def __send_sms(sns, phone_number, message):
+    try:
+        response = sns.publish(
+            PhoneNumber=phone_number,
+            Message=message
+        )
+        
+        return {
+            'statusCode': 200,
+            'body': 'SMS sent successfully!',
+            'messageId': response['MessageId']
+        }
+    except Exception as e:
+        print("Error sending SMS:", str(e))
+        return {
+            'statusCode': 500,
+            'body': 'Error sending SMS'
+        }
 
 
 def __authenticate_as_admin():
@@ -34,7 +55,3 @@ def __get_quote_prices_notifications(token):
     if response.status_code != 200:
         return None
     return response['response']
-
-
-def __mock_send_sms(phone, message):
-    print(f'To: {phone}. message: {message}')
