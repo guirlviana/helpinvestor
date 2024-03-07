@@ -37,7 +37,7 @@ def get_assets_on_target_prices():
             if Decimal(quote_price) >= target['sale_price']:
                 # opportunity to earn sealling
                 users_to_notify.append({
-                    'message': f'{symbol}, reached: R${Decimal(quote_price)} Your alert was set: SALE with {target["sale_price"]} or high',
+                    'message': f'{symbol}, reached: R${Decimal(quote_price)} Your alert was set: SALE with R${target["sale_price"]} or high',
                     'phone': target['phone'],
                 })
                 continue
@@ -45,7 +45,7 @@ def get_assets_on_target_prices():
             if Decimal(quote_price) <= target['buy_price']:
                 # opportunity to earn buying
                 users_to_notify.append({
-                    'message': f'{symbol}, reached: R${Decimal(quote_price)} Your alert was set: BUY with {target["buy_price"]} or lower',
+                    'message': f'{symbol}, reached: R${Decimal(quote_price)} Your alert was set: BUY with R${target["buy_price"]} or lower',
                     'phone': target['phone'],
                 })
                 continue
