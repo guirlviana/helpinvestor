@@ -7,7 +7,7 @@ def task_send_quotes_in_sms():
     if not token:
         return
 
-    notifications = __get_quote_prices_notifications()
+    notifications = __get_quote_prices_notifications(token)
     if not notifications:
         return
     
@@ -28,7 +28,7 @@ def __authenticate_as_admin():
     return response['token']
 
 
-def __get_quote_prices_notifications():
+def __get_quote_prices_notifications(token):
     headers = {'Authorization': f'Token {token}'}
     response = requests.get(f'{settings.APP_URL}/get-share-prices/', headers=headers)
     if response.status_code != 200:
