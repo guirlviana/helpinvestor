@@ -64,4 +64,6 @@ def __get_quote_prices_notifications(token):
     response = requests.get(f'{settings.APP_URL}/get-share-prices/', headers=headers)
     if response.status_code != 200:
         return None
+    
+    response = response.json()
     return response['response']
