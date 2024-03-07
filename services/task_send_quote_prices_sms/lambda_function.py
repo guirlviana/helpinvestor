@@ -6,11 +6,17 @@ def lambda_handler(event, context):
     sns = boto3.client('sns', region_name='us-east-1')
     token = __authenticate_as_admin()
     if not token:
-        return
+        return {
+            'statusCode': 422,
+            'body': 'Authentication failed'
+        }
     
     notifications = __get_quote_prices_notifications(token)
     if not notifications:
-        return
+        return {
+            'statusCode': 422,
+            'body': 'No target quote prices found'
+        }
     
     for notification in notifications:
         __send_sms(sns, notification['phone'], notification['message'])
