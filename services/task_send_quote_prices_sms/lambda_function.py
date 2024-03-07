@@ -2,6 +2,10 @@ from django.conf import settings
 import requests
 import os
 
+# Navigate to the folder in your command line. 
+# You should be at the same level as lambda_function.py
+# Now run "pip install requests -t ./"
+
 def lambda_handler(event, context):
     sns = boto3.client('sns', region_name='us-east-1')
     token = __authenticate_as_admin()
