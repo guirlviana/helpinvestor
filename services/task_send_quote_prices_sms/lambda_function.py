@@ -1,10 +1,9 @@
 import boto3
 import requests
-import os
 
-# Navigate to the folder in your command line. 
-# You should be at the same level as lambda_function.py
-# Now run "pip install requests -t ./"
+ADMIN_EMAIL='pitoco@gmail.com'
+ADMIN_PASSWORD='123456'
+URL="http://127.0.0.1:8000"
 
 def lambda_handler(event, context):
     sns = boto3.client('sns', region_name='us-east-1')
@@ -47,9 +46,9 @@ def __send_sms(sns, phone_number, message):
 
 
 def __authenticate_as_admin():
-    response = requests.post(f'{settings.APP_URL}/api-token-auth/', {
-        "username": os.environ.get('ADMIN_EMAIL'),
-        "password": os.environ.get('ADMIN_PASSWORD')
+    response = requests.post(f'{URL}/api-token-auth/', { # settings remover
+        "username": ADMIN_EMAIL,
+        "password": ADMIN_PASSWORD
     })
     
     if response.status_code != 200:
@@ -61,7 +60,7 @@ def __authenticate_as_admin():
 
 def __get_quote_prices_notifications(token):
     headers = {'Authorization': f'Token {token}'}
-    response = requests.get(f'{settings.APP_URL}/get-share-prices/', headers=headers)
+    response = requests.get(f'{URL}/get-share-prices/', headers=headers)
     if response.status_code != 200:
         return None
     
