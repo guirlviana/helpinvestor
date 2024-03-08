@@ -23,6 +23,11 @@ def lambda_handler(event, context):
     
     for notification in notifications:
         __send_sms(sns, notification['phone'], notification['message'])
+    
+    return {
+        'statusCode': 200,
+        'body': 'Everything done!' 
+    }
 
 
 def __send_sms(sns, phone_number, message):
