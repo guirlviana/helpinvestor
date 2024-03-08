@@ -18,6 +18,7 @@ When the price targets<br> we going to send you a notification</b>
 - Django
 - Django Rest Framework
 - AWS Lambda
+- AWS EventBridge
 - AWS EC2
 - AWS RDS
 - AWS SNS
