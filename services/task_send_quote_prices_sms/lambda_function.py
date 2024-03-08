@@ -51,7 +51,7 @@ def __send_sms(sns, phone_number, message):
 
 
 def __authenticate_as_admin():
-    response = requests.post(f'{URL}/api-token-auth/', { # settings remover
+    response = requests.post(f'{URL}/api-token-auth/', {
         "username": ADMIN_EMAIL,
         "password": ADMIN_PASSWORD
     })
