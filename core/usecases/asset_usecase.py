@@ -20,7 +20,9 @@ def create_asset(wallet_id, symbol, buy_price, sale_price):
 
 
 def get_assets(wallet_id):
-    return list(Asset.objects.defer('is_deleted', 'wallet_id').filter(wallet_id=wallet_id, is_deleted=False).values())
+    assets = Asset.objects.defer('is_deleted', 'wallet_id').filter(wallet_id=wallet_id, is_deleted=False)
+
+    return list(assets.values())
 
 
 def get_assets_on_target_prices():
