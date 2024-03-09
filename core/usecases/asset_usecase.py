@@ -9,6 +9,10 @@ def create_asset(wallet_id, symbol, buy_price, sale_price):
     if symbol not in AVAILABLE_SYMBOLS:
         raise Exception(f'Symbol: {symbol} not valid, options: {AVAILABLE_SYMBOLS}')
     
+    asset_already_created = Asset.objects.filter(symbol=symbol, wallet_id=wallet_id).exists()
+    if asset_already_created:
+        raise Exception(f'Symbol: {symbol} already created')
+    
     asset = Asset(symbol=symbol, wallet_id=wallet_id, buy_price=buy_price, sale_price=sale_price)
     asset.save()
 
