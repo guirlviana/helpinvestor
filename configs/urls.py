@@ -24,5 +24,6 @@ urlpatterns = [
     path('api-token-auth/', views.obtain_auth_token),
     path('investor/', investor_api.create_user),
     path('create-asset/', asset_api.create_asset),
+    path('get-assets/', asset_api.get_assets),
     path('get-share-prices/', asset_api.get_share_prices),
 ]
