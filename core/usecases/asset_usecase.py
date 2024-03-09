@@ -18,6 +18,11 @@ def create_asset(wallet_id, symbol, buy_price, sale_price):
 
     return asset
 
+
+def get_assets(wallet_id):
+    return list(Asset.objects.defer('is_deleted', 'wallet_id').filter(wallet_id=wallet_id, is_deleted=False).values())
+
+
 def get_assets_on_target_prices():
     assets = Asset.objects.filter(is_deleted=False).select_related('wallet', 'wallet__investor')
     assets_by_symbol = defaultdict(list)
