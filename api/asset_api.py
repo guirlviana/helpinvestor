@@ -31,6 +31,15 @@ def create_asset(request):
 
     return JsonResponse({'response': f'Your asset: {new_asset.symbol} has been created'}, status=201)
 
+
+def get_assets(request):
+    wallet = request.user.investor.wallet_set.get()
+
+    assets = asset_usecase.get_assets(wallet_id=wallet.id)
+
+    return JsonResponse({'response': assets})
+
+
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated, IsAdminUser])
