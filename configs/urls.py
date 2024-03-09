@@ -23,6 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-token-auth/', views.obtain_auth_token),
     path('investor/', investor_api.create_user),
-    path('asset/', asset_api.create_asset),
+    path('create-asset/', asset_api.create_asset),
     path('get-share-prices/', asset_api.get_share_prices),
 ]
