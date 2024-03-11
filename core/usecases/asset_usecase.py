@@ -27,7 +27,10 @@ def get_assets(wallet_id):
 
 
 def edit_asset(id, wallet_id, new_values):
-    ...
+    fields_allowed_update = {'symbol', 'buy_price', 'sale_price'}
+    if set(new_values.keys()) - fields_allowed_update:
+        raise Exception(f'Fields to update not allowed. Allowed fields: {", ".join(fields_allowed_update)}')
+    
 
 
 def get_assets_on_target_prices():
