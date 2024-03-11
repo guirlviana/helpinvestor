@@ -48,6 +48,11 @@ def get_assets(request):
 @permission_classes([IsAuthenticated])
 def edit_asset(request, id):
     wallet = request.user.investor.wallet_set.get()
+    data = request.data
+
+    asset = AssetSerializer(data=data, fields_to_validate=data.keys())
+    if not asset.is_valid():
+        return JsonResponse(asset.errors, status=400)
 
     try:
         asset_usecase.edit_asset(wallet_id=wallet.id, id=id, new_values=request.data)
