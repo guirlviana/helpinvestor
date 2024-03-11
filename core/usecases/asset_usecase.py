@@ -31,6 +31,9 @@ def edit_asset(id, wallet_id, new_values):
     if set(new_values.keys()) - fields_allowed_update:
         raise Exception(f'Fields to update not allowed. Allowed fields: {", ".join(fields_allowed_update)}')
     
+    asset = Asset.objects.filter(id=id, wallet_id=wallet_id)
+    if not asset:
+        raise Exception('Asset does not exists')
 
 
 def get_assets_on_target_prices():
