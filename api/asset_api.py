@@ -43,7 +43,7 @@ def get_assets(request):
     return JsonResponse({'response': assets})
 
 
-def get_assets(request):
+def get_assets(request, id):
     ...
 
 @api_view(['GET'])
