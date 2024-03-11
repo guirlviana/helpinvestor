@@ -40,7 +40,9 @@ def edit_asset(id: int, wallet_id: int, new_values: dict):
 
 
 def delete_asset(id: int, wallet_id: int):
-    ...
+    asset = Asset.objects.filter(id=id, wallet_id=wallet_id).exists()
+    if not asset:
+        raise Exception('Asset does not exists')
 
 
 def get_assets_on_target_prices():
