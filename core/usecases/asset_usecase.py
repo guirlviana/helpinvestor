@@ -19,7 +19,7 @@ def create_asset(wallet_id, symbol, buy_price, sale_price):
     return asset
 
 
-def get_assets(wallet_id):
+def get_assets(wallet_id: int):
     fields_available = ('id', 'symbol', 'buy_price', 'sale_price')
     assets = Asset.objects.filter(wallet_id=wallet_id, is_deleted=False)
 
@@ -39,7 +39,7 @@ def edit_asset(id: int, wallet_id: int, new_values: dict):
     Asset.objects.filter(id=id, wallet_id=wallet_id).update(**new_values)
 
 
-def delete_asset(id, wallet_id):
+def delete_asset(id: int, wallet_id: int):
     ...
 
 
