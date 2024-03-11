@@ -25,6 +25,6 @@ urlpatterns = [
     path('investor/', investor_api.create_user),
     path('create-asset/', asset_api.create_asset),
     path('get-assets/', asset_api.get_assets),
-    path('edit-assets/', asset_api.edit_asset),
+    path('edit-asset/<int:id>/', asset_api.edit_asset),
     path('get-share-prices/', asset_api.get_share_prices),
 ]
