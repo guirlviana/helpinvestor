@@ -43,6 +43,9 @@ def get_assets(request):
     return JsonResponse({'response': assets})
 
 
+@api_view(['PUT'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 def get_assets(request, id):
     ...
 
