@@ -39,6 +39,10 @@ def edit_asset(id: int, wallet_id: int, new_values: dict):
     Asset.objects.filter(id=id, wallet_id=wallet_id).update(**new_values)
 
 
+def delete_asset(id, wallet_id):
+    ...
+
+
 def get_assets_on_target_prices():
     assets = Asset.objects.filter(is_deleted=False).select_related('wallet', 'wallet__investor')
     assets_by_symbol = defaultdict(list)
