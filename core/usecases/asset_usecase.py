@@ -20,7 +20,7 @@ def create_asset(wallet_id, symbol, buy_price, sale_price):
 
 
 def get_assets(wallet_id):
-    fields_available = ['id', 'symbol', 'buy_price', 'sale_price']
+    fields_available = ('id', 'symbol', 'buy_price', 'sale_price')
     assets = Asset.objects.filter(wallet_id=wallet_id, is_deleted=False)
 
     return list(assets.values(*fields_available))
