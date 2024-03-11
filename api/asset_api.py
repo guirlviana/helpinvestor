@@ -66,7 +66,7 @@ def edit_asset(request, id):
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def delete_asset(request, id):
-    ...
+    wallet = request.user.investor.wallet_set.get()
 
 
 @api_view(['GET'])
