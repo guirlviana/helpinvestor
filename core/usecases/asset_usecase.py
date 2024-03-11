@@ -32,7 +32,7 @@ def edit_asset(id: int, wallet_id: int, new_values: dict):
     if fields_sent - fields_allowed_update:
         raise Exception(f'Fields to update not allowed. Allowed fields: {", ".join(fields_allowed_update)}')
     
-    asset = Asset.objects.filter(id=id, wallet_id=wallet_id)
+    asset = Asset.objects.filter(id=id, wallet_id=wallet_id).exists()
     if not asset:
         raise Exception('Asset does not exists')
     
