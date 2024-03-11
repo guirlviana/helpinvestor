@@ -97,10 +97,10 @@ python manage.py runserver
 | Create Investor | Done   |
 | Create Asset    | Done   |
 | Task for quotes | Done   |
-| Push notifications | To-do |
-| Phone Validator | To-do  |
+| SMS notifications | Done |
+| Phone Validator | Done  |
+| Update Asset | Done  |
 | Update Investor | To-do  |
-| Update Asset | To-do  |
 | Test coverage 100% | To-do  |
 | CI/CD for deploy | To-do  |
 
