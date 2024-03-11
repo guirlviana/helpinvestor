@@ -46,7 +46,7 @@ def get_assets(request):
 @api_view(['PUT'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
-def get_assets(request, id):
+def edit_asset(request, id):
     wallet = request.user.investor.wallet_set.get()
 
     asset_usecase.edit_asset(wallet_id=wallet.id, id=id, new_values=request.body)
