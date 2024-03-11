@@ -26,6 +26,19 @@ def get_assets(wallet_id):
     return list(assets.values(*fields_available))
 
 
+def edit_asset(id: int, wallet_id: int, new_values: dict):
+    fields_allowed_update = {'symbol', 'buy_price', 'sale_price'}
+    fields_sent = set(new_values.keys())
+    if fields_sent - fields_allowed_update:
+        raise Exception(f'Fields to update not allowed. Allowed fields: {", ".join(fields_allowed_update)}')
+    
+    asset = Asset.objects.filter(id=id, wallet_id=wallet_id).exists()
+    if not asset:
+        raise Exception('Asset does not exists')
+    
+    Asset.objects.filter(id=id, wallet_id=wallet_id).update(**new_values)
+
+
 def get_assets_on_target_prices():
     assets = Asset.objects.filter(is_deleted=False).select_related('wallet', 'wallet__investor')
     assets_by_symbol = defaultdict(list)

@@ -43,6 +43,25 @@ def get_assets(request):
     return JsonResponse({'response': assets})
 
 
+@api_view(['PUT'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def edit_asset(request, id):
+    wallet = request.user.investor.wallet_set.get()
+    data = request.data
+
+    asset = AssetSerializer(data=data, fields_to_validate=data.keys())
+    if not asset.is_valid():
+        return JsonResponse(asset.errors, status=400)
+
+    try:
+        asset_usecase.edit_asset(wallet_id=wallet.id, id=id, new_values=request.data)
+    except Exception as e:
+        return JsonResponse({'response': str(e)}, status=422)
+
+    return JsonResponse({'response': 'update successfull'})
+
+
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated, IsAdminUser])
