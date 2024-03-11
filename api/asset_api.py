@@ -62,6 +62,10 @@ def edit_asset(request, id):
     return JsonResponse({'response': 'update successfull'})
 
 
+def delete_asset(request, id):
+    ...
+
+
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated, IsAdminUser])
