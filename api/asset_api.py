@@ -68,7 +68,10 @@ def edit_asset(request, id):
 def delete_asset(request, id):
     wallet = request.user.investor.wallet_set.get()
 
-    asset_usecase.delete_asset(wallet_id=wallet.id, id=id)
+    try:
+        asset_usecase.delete_asset(wallet_id=wallet.id, id=id)
+    except Exception as e:
+        return JsonResponse({'response': str(e)}, status=422)
 
 
 @api_view(['GET'])
