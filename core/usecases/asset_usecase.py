@@ -28,7 +28,8 @@ def get_assets(wallet_id):
 
 def edit_asset(id: int, wallet_id: int, new_values: dict):
     fields_allowed_update = {'symbol', 'buy_price', 'sale_price'}
-    if set(new_values.keys()) - fields_allowed_update:
+    fields_sent = set(new_values.keys())
+    if fields_sent - fields_allowed_update:
         raise Exception(f'Fields to update not allowed. Allowed fields: {", ".join(fields_allowed_update)}')
     
     asset = Asset.objects.filter(id=id, wallet_id=wallet_id)
