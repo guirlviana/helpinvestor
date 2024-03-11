@@ -26,6 +26,10 @@ def get_assets(wallet_id):
     return list(assets.values(*fields_available))
 
 
+def edit_asset(id, wallet_id, new_values):
+    ...
+
+
 def get_assets_on_target_prices():
     assets = Asset.objects.filter(is_deleted=False).select_related('wallet', 'wallet__investor')
     assets_by_symbol = defaultdict(list)
