@@ -36,8 +36,7 @@ def edit_asset(id: int, wallet_id: int, new_values: dict):
     if not asset:
         raise Exception('Asset does not exists')
     
-    asset = asset[0]
-    asset.update(**new_values)
+    Asset.objects.filter(id=id, wallet_id=wallet_id).update(**new_values)
 
 
 def get_assets_on_target_prices():
