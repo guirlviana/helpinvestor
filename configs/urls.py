@@ -26,5 +26,6 @@ urlpatterns = [
     path('create-asset/', asset_api.create_asset),
     path('get-assets/', asset_api.get_assets),
     path('edit-asset/<int:id>/', asset_api.edit_asset),
+    path('delete-asset/<int:id>/', asset_api.delete_asset),
     path('get-share-prices/', asset_api.get_share_prices),
 ]
