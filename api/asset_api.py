@@ -43,6 +43,9 @@ def get_assets(request):
     return JsonResponse({'response': assets})
 
 
+def get_assets(request):
+    ...
+
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated, IsAdminUser])
