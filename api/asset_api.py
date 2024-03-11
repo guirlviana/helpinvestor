@@ -49,7 +49,7 @@ def get_assets(request):
 def edit_asset(request, id):
     wallet = request.user.investor.wallet_set.get()
 
-    asset_usecase.edit_asset(wallet_id=wallet.id, id=id, new_values=request.body)
+    asset_usecase.edit_asset(wallet_id=wallet.id, id=id, new_values=request.data)
 
     return JsonResponse({'response': 'update successfull'})
 
