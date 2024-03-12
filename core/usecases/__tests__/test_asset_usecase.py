@@ -52,4 +52,8 @@ class CreateAssetTests(TestCase):
         self.assertEqual(f'Symbol: {data['symbol']} already created', str(e.exception))
 
 class GetAssetsTests(TestCase):
-    ...
+    def test_should_return_all_assets(self):
+        ...
+    
+    def test_should_return_only_fields_available(self):
+        ...
