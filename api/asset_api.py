@@ -62,6 +62,20 @@ def edit_asset(request, id):
     return JsonResponse({'response': 'update successfull'})
 
 
+@api_view(['DELETE'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def delete_asset(request, id):
+    wallet = request.user.investor.wallet_set.get()
+
+    try:
+        asset_usecase.delete_asset(wallet_id=wallet.id, id=id)
+    except Exception as e:
+        return JsonResponse({'response': str(e)}, status=422)
+    
+    return JsonResponse({'response': 'delete successfull'})
+
+
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated, IsAdminUser])

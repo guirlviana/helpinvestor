@@ -19,7 +19,7 @@ def create_asset(wallet_id, symbol, buy_price, sale_price):
     return asset
 
 
-def get_assets(wallet_id):
+def get_assets(wallet_id: int):
     fields_available = ('id', 'symbol', 'buy_price', 'sale_price')
     assets = Asset.objects.filter(wallet_id=wallet_id, is_deleted=False)
 
@@ -37,6 +37,14 @@ def edit_asset(id: int, wallet_id: int, new_values: dict):
         raise Exception('Asset does not exists')
     
     Asset.objects.filter(id=id, wallet_id=wallet_id).update(**new_values)
+
+
+def delete_asset(id: int, wallet_id: int):
+    asset = Asset.objects.filter(id=id, wallet_id=wallet_id).exists()
+    if not asset:
+        raise Exception('Asset does not exists')
+    
+    Asset.objects.filter(id=id, wallet_id=wallet_id).delete()
 
 
 def get_assets_on_target_prices():
