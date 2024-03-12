@@ -22,3 +22,16 @@ class CreateAssetTests(TestCase):
         self.assertEqual(data['symbol'], asset.symbol)
         self.assertEqual(data['buy_price'], asset.buy_price)
         self.assertEqual(data['sale_price'], asset.sale_price)
+    
+    def test_error_when_symbol_not_in_available_symbols(self):
+        data = {
+            'wallet_id': self.wallet_id,
+            'symbol': 'HPIN3', 
+            'buy_price': 10, 
+            'sale_price': 15,
+        }
+
+        with self.assertRaises(Exception) as e:
+            create_asset(**data)
+        
+        self.assertEqual(f"Symbol: {data['symbol']} not valid, options: ITSA4, TAEE4, BBSE3", str(e.exception))
