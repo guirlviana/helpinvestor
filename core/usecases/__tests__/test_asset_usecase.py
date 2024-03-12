@@ -1,5 +1,5 @@
 from django.test import TestCase
-from core.usecases.asset_usecase import create_asset
+from core.usecases.asset_usecase import create_asset, get_assets
 from core.usecases.investor_usecase import create_investor
 from db.models import Asset
 
@@ -58,7 +58,20 @@ class CreateAssetTests(AssetsTestCase):
 
 class GetAssetsTests(AssetsTestCase):
     def test_should_return_all_assets(self):
-        ...
+        data = {
+            'wallet_id': self.wallet_id,
+            'symbol': 'TAEE4', 
+            'buy_price': 10, 
+            'sale_price': 15,
+        }
+        create_asset(**data)
+        data['symbol'] = 'BBSE3'
+        create_asset(**data)
+
+        assets = get_assets(self.wallet_id)
+
+        self.assertEqual(2, len(assets))
+
     
     def test_should_return_only_fields_available(self):
         ...
