@@ -7,7 +7,7 @@ AVAILABLE_SYMBOLS = ['ITSA4', 'TAEE4', 'BBSE3']
 
 def create_asset(wallet_id, symbol, buy_price, sale_price):
     if symbol not in AVAILABLE_SYMBOLS:
-        raise Exception(f'Symbol: {symbol} not valid, options: {AVAILABLE_SYMBOLS}')
+        raise Exception(f'Symbol: {symbol} not valid, options: {", ".join(AVAILABLE_SYMBOLS)}')
     
     asset_already_created = Asset.objects.filter(symbol=symbol, wallet_id=wallet_id).exists()
     if asset_already_created:
