@@ -8,7 +8,7 @@ class AssetsTestCase(TestCase):
         self.investor = create_investor('john', 'doe', '11999999999', 'email@email.com', 'abcdfg123')
         self.wallet_id = self.investor.wallet_set.get().id
 
-class CreateAssetTests(TestCase):
+class CreateAssetTests(AssetsTestCase):
     def setUp(self) -> None:
         self.investor = create_investor('john', 'doe', '11999999999', 'email@email.com', 'abcdfg123')
         self.wallet_id = self.investor.wallet_set.get().id
