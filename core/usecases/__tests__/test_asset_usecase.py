@@ -54,7 +54,7 @@ class CreateAssetTests(AssetsTestCase):
         with self.assertRaises(Exception) as e:
             create_asset(**data)
         
-        self.assertEqual(f'Symbol: {data['symbol']} already created', str(e.exception))
+        self.assertEqual(f"Symbol: {data['symbol']} already created", str(e.exception))
 
 class GetAssetsTests(AssetsTestCase):
     def test_should_return_all_assets(self):
