@@ -21,7 +21,7 @@ def create_asset(wallet_id, symbol, buy_price, sale_price):
 
 def get_assets(wallet_id: int):
     fields_available = ('id', 'symbol', 'buy_price', 'sale_price')
-    assets = Asset.objects.filter(wallet_id=wallet_id, is_deleted=False)
+    assets = Asset.objects.filter(wallet_id=wallet_id)
 
     return list(assets.values(*fields_available))
 
@@ -48,7 +48,7 @@ def delete_asset(id: int, wallet_id: int):
 
 
 def get_assets_on_target_prices():
-    assets = Asset.objects.filter(is_deleted=False).select_related('wallet', 'wallet__investor')
+    assets = Asset.objects.all().select_related('wallet', 'wallet__investor')
     assets_by_symbol = defaultdict(list)
     
     for asset in assets:
