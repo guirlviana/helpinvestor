@@ -3,7 +3,7 @@ from decimal import Decimal
 from db.models import Asset
 from services import stock_market_api
 
-AVAILABLE_SYMBOLS = {'ITSA4', 'TAEE4', 'BBSE3'}
+AVAILABLE_SYMBOLS = ['ITSA4', 'TAEE4', 'BBSE3']
 
 def create_asset(wallet_id, symbol, buy_price, sale_price):
     if symbol not in AVAILABLE_SYMBOLS:
