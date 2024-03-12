@@ -101,7 +101,7 @@ python manage.py runserver
 | Phone Validator | Done  |
 | Update/Delete Asset | Done  |
 | Update Investor | To-do  |
-| Test coverage 100% | To-do  |
+| Tests cover 100% | Doing  |
 | CI/CD for deploy | To-do  |
 
 
