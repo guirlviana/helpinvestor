@@ -35,3 +35,18 @@ class CreateAssetTests(TestCase):
             create_asset(**data)
         
         self.assertEqual(f"Symbol: {data['symbol']} not valid, options: ITSA4, TAEE4, BBSE3", str(e.exception))
+
+
+    def test_error_when_try_create_symbol_again(self):
+        data = {
+            'wallet_id': self.wallet_id,
+            'symbol': 'TAEE4', 
+            'buy_price': 10, 
+            'sale_price': 15,
+        }
+
+        create_asset(**data)
+        with self.assertRaises(Exception) as e:
+            create_asset(**data)
+        
+        self.assertEqual(f'Symbol: {data['symbol']} already created', str(e.exception))
