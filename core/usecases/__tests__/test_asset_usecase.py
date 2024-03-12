@@ -50,3 +50,6 @@ class CreateAssetTests(TestCase):
             create_asset(**data)
         
         self.assertEqual(f'Symbol: {data['symbol']} already created', str(e.exception))
+
+class GetAssetsTests(TestCase):
+    ...
