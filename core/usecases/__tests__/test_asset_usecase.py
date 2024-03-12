@@ -74,4 +74,16 @@ class GetAssetsTests(AssetsTestCase):
 
     
     def test_should_return_only_fields_available(self):
-        ...
+        data = {
+            'wallet_id': self.wallet_id,
+            'symbol': 'TAEE4', 
+            'buy_price': 10, 
+            'sale_price': 15,
+        }
+        create_asset(**data)
+
+        assets = get_assets(self.wallet_id)
+
+        self.assertEqual(1, len(assets))
+        asset = assets[0]
+        self.assertListEqual(['id', 'symbol', 'buy_price', 'sale_price'], list(asset.keys()))
