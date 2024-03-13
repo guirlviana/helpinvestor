@@ -87,3 +87,6 @@ class GetAssetsTests(AssetsTestCase):
         self.assertEqual(1, len(assets))
         asset = assets[0]
         self.assertListEqual(['id', 'symbol', 'buy_price', 'sale_price'], list(asset.keys()))
+
+class EditAsset(AssetsTestCase):
+    ...
