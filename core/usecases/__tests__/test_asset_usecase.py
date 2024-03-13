@@ -98,4 +98,13 @@ class EditAsset(AssetsTestCase):
         self.assertEqual('TAEE4', asset_edited.symbol)
         self.assertEqual(asset.buy_price, asset_edited.buy_price)
         self.assertEqual(asset.sale_price, asset_edited.sale_price)
+    
+    def __create_asset(self, **kwargs):
+        default = {
+            'wallet_id': self.wallet_id,
+            'symbol': 'TAEE4', 
+            'buy_price': 10, 
+            'sale_price': 15,
+        } | kwargs
 
+        return create_asset(**default)
