@@ -138,4 +138,8 @@ class DeleteAsset(AssetsTestCase):
         self.assertFalse(Asset.objects.filter(id=asset.id).exists())
     
     def test_error_when_delete_asset_that_doesnt_exists(self):
-        ...
+        invalid_id = 99
+        with self.assertRaises(Exception) as e:
+            delete_asset(invalid_id, self.wallet_id)
+        
+        self.assertEqual('Asset does not exists', str(e.exception))
