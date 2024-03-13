@@ -1,5 +1,5 @@
 from django.test import TestCase
-from core.usecases.asset_usecase import create_asset, edit_asset, get_assets
+from core.usecases.asset_usecase import create_asset, delete_asset, edit_asset, get_assets
 from core.usecases.investor_usecase import create_investor
 from db.models import Asset
 
@@ -105,7 +105,7 @@ class EditAsset(AssetsTestCase):
         with self.assertRaises(Exception) as e:
             edit_asset(asset.id, self.wallet_id, new_values={'id': 99})
         
-        self.assertEqual('Fields to update not allowed. Allowed fields: buy_price, sale_price, symbol', str(e.exception))
+        self.assertEqual('Fields to update not allowed', str(e.exception))
     
     def test_error_when_try_update_assets_that_doesnt_exists(self):
         invalid_id = 1
