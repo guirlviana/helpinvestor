@@ -99,6 +99,14 @@ class EditAsset(AssetsTestCase):
         self.assertEqual(asset.buy_price, asset_edited.buy_price)
         self.assertEqual(asset.sale_price, asset_edited.sale_price)
     
+    def test_error_when_try_update_not_allowed_fields(self):
+        asset = self.__create_asset(symbol='BBSE3')
+        
+        with self.assertRaises(Exception) as e:
+            edit_asset(asset.id, self.wallet_id, new_values={'id': 99})
+        
+        self.assertEqual('Fields to update not allowed. Allowed fields: buy_price, sale_price, symbol', str(e.exception))
+
     def __create_asset(self, **kwargs):
         default = {
             'wallet_id': self.wallet_id,
