@@ -89,4 +89,13 @@ class GetAssetsTests(AssetsTestCase):
         self.assertListEqual(['id', 'symbol', 'buy_price', 'sale_price'], list(asset.keys()))
 
 class EditAsset(AssetsTestCase):
-    ...
+    def test_should_update_only_sent_fields(self):
+        asset = self.__create_asset(symbol='BBSE3')
+
+        edit_asset(asset.id, self.wallet_id, new_values={'symbol': 'TAEE4'})
+
+        asset_edited = Asset.objects.get(id=asset.id)
+        self.assertEqual('TAEE4', asset_edited.symbol)
+        self.assertEqual(asset.buy_price, asset_edited.buy_price)
+        self.assertEqual(asset.sale_price, asset_edited.sale_price)
+
