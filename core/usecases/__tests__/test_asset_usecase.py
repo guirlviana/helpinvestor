@@ -123,3 +123,10 @@ class EditAsset(AssetsTestCase):
         } | kwargs
 
         return create_asset(**default)
+
+class DeleteAsset(AssetsTestCase):
+    def test_should_delete_field(self):
+        ...
+    
+    def test_error_when_delete_asset_that_doesnt_exists(self):
+        ...
