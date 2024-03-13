@@ -106,6 +106,13 @@ class EditAsset(AssetsTestCase):
             edit_asset(asset.id, self.wallet_id, new_values={'id': 99})
         
         self.assertEqual('Fields to update not allowed. Allowed fields: buy_price, sale_price, symbol', str(e.exception))
+    
+    def test_error_when_try_update_assets_that_doesnt_exists(self):
+        invalid_id = 1
+        with self.assertRaises(Exception) as e:
+            edit_asset(invalid_id, self.wallet_id, new_values={})
+        
+        self.assertEqual('Asset does not exists', str(e.exception))
 
     def __create_asset(self, **kwargs):
         default = {
