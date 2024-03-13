@@ -1,5 +1,5 @@
 from django.test import TestCase
-from core.usecases.asset_usecase import create_asset, get_assets
+from core.usecases.asset_usecase import create_asset, edit_asset, get_assets
 from core.usecases.investor_usecase import create_investor
 from db.models import Asset
 
