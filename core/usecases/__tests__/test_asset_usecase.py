@@ -126,7 +126,16 @@ class EditAsset(AssetsTestCase):
 
 class DeleteAsset(AssetsTestCase):
     def test_should_delete_field(self):
-        ...
+        asset = create_asset(
+            wallet_id=self.wallet_id,
+            symbol='TAEE4', 
+            buy_price=10, 
+            sale_price=15,
+        )
+        
+        delete_asset(asset.id, self.wallet_id)
+
+        self.assertFalse(Asset.objects.filter(id=asset.id).exists())
     
     def test_error_when_delete_asset_that_doesnt_exists(self):
         ...
