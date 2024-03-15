@@ -3,11 +3,11 @@ from decimal import Decimal
 from db.models import Asset
 from services import stock_market_api
 
-AVAILABLE_SYMBOLS = {'ITSA4', 'TAEE4', 'BBSE3'}
+AVAILABLE_SYMBOLS = ['ITSA4', 'TAEE4', 'BBSE3']
 
 def create_asset(wallet_id, symbol, buy_price, sale_price):
     if symbol not in AVAILABLE_SYMBOLS:
-        raise Exception(f'Symbol: {symbol} not valid, options: {AVAILABLE_SYMBOLS}')
+        raise Exception(f'Symbol: {symbol} not valid, options: {", ".join(AVAILABLE_SYMBOLS)}')
     
     asset_already_created = Asset.objects.filter(symbol=symbol, wallet_id=wallet_id).exists()
     if asset_already_created:
@@ -30,7 +30,7 @@ def edit_asset(id: int, wallet_id: int, new_values: dict):
     fields_allowed_update = {'symbol', 'buy_price', 'sale_price'}
     fields_sent = set(new_values.keys())
     if fields_sent - fields_allowed_update:
-        raise Exception(f'Fields to update not allowed. Allowed fields: {", ".join(fields_allowed_update)}')
+        raise Exception(f'Fields to update not allowed')
     
     asset = Asset.objects.filter(id=id, wallet_id=wallet_id).exists()
     if not asset:
@@ -49,6 +49,9 @@ def delete_asset(id: int, wallet_id: int):
 
 def get_assets_on_target_prices():
     assets = Asset.objects.all().select_related('wallet', 'wallet__investor')
+    if not assets:
+        return
+    
     assets_by_symbol = defaultdict(list)
     
     for asset in assets:
