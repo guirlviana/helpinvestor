@@ -74,7 +74,6 @@ class GetAssetsTests(AssetsTestCase):
 
         self.assertEqual(2, len(assets))
 
-    
     def test_should_return_only_fields_available(self):
         data = {
             'wallet_id': self.wallet_id,
@@ -89,6 +88,7 @@ class GetAssetsTests(AssetsTestCase):
         self.assertEqual(1, len(assets))
         asset = assets[0]
         self.assertListEqual(['id', 'symbol', 'buy_price', 'sale_price'], list(asset.keys()))
+
 
 class EditAsset(AssetsTestCase):
     def test_should_update_only_sent_fields(self):
@@ -125,6 +125,7 @@ class EditAsset(AssetsTestCase):
         } | kwargs
 
         return create_asset(**default)
+
 
 class DeleteAsset(AssetsTestCase):
     def test_should_delete_field(self):
