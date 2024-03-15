@@ -1,3 +1,5 @@
+from decimal import Decimal
+from unittest.mock import patch
 from django.test import TestCase
 from core.usecases.asset_usecase import create_asset, delete_asset, edit_asset, get_assets, get_assets_on_target_prices
 from core.usecases.investor_usecase import create_investor
@@ -148,5 +150,18 @@ class DeleteAssetTests(AssetsTestCase):
         self.assertEqual('Asset does not exists', str(e.exception))
 
 
-class getAssetsOnTargetPricesTests(AssetsTestCase):
-    ...
+class GetAssetsOnTargetPricesTests(AssetsTestCase):
+    def test_should_return_nothing_when_doesnt_exists_assets(self):
+        self.assertIsNone(get_assets_on_target_prices())
+
+    @patch('services.stock_market_api.get_live_quote_price')
+    def test_should_return_a_empty_list_when_client_api_doesnt_return_quotes(self, mock_get_live_quote_price):
+        mock_get_live_quote_price.return_value = None
+        create_asset(
+            wallet_id=self.wallet_id,
+            symbol='TAEE4',
+            buy_price=10,
+            sale_price=15,
+        )
+
+        self.assertEqual([], get_assets_on_target_prices())
