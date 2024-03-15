@@ -90,7 +90,7 @@ class GetAssetsTests(AssetsTestCase):
         self.assertListEqual(['id', 'symbol', 'buy_price', 'sale_price'], list(asset.keys()))
 
 
-class EditAsset(AssetsTestCase):
+class EditAssetTests(AssetsTestCase):
     def test_should_update_only_sent_fields(self):
         asset = self.__create_asset(symbol='BBSE3')
 
@@ -127,7 +127,7 @@ class EditAsset(AssetsTestCase):
         return create_asset(**default)
 
 
-class DeleteAsset(AssetsTestCase):
+class DeleteAssetTests(AssetsTestCase):
     def test_should_delete_field(self):
         asset = create_asset(
             wallet_id=self.wallet_id,
@@ -148,5 +148,5 @@ class DeleteAsset(AssetsTestCase):
         self.assertEqual('Asset does not exists', str(e.exception))
 
 
-class getAssetsOnTargetPrices(AssetsTestCase):
+class getAssetsOnTargetPricesTests(AssetsTestCase):
     ...
