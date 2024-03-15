@@ -185,3 +185,21 @@ class GetAssetsOnTargetPricesTests(AssetsTestCase):
         self.assertEqual(f'TAEE4, reached: R${Decimal(live_quote_price)} Your alert was set: SALE with R${sale_price:.2f} or high', asset_to_notify['message'])
         self.assertEqual(self.investor.phone, asset_to_notify['phone'])
 
+    @patch('services.stock_market_api.get_live_quote_price')
+    def test_should_return_asset_when_quote_price_is_less_or_equal_than_buy_price(self, mock_get_live_quote_price):
+        live_quote_price = 10
+        buy_price = live_quote_price + 1
+        mock_get_live_quote_price.side_effect = lambda symbol: live_quote_price if symbol == 'TAEE4' else None
+        create_asset(
+            wallet_id=self.wallet_id,
+            symbol='TAEE4',
+            buy_price=buy_price,
+            sale_price=50,
+        )
+
+        response = get_assets_on_target_prices()
+
+        self.assertEqual(1, len(response))
+        asset_to_notify = response[0]
+        self.assertEqual(f'TAEE4, reached: R${Decimal(live_quote_price)} Your alert was set: BUY with R${buy_price:.2f} or lower', asset_to_notify['message'])
+        self.assertEqual(self.investor.phone, asset_to_notify['phone'])
