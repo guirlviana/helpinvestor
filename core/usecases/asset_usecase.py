@@ -49,6 +49,9 @@ def delete_asset(id: int, wallet_id: int):
 
 def get_assets_on_target_prices():
     assets = Asset.objects.filter(is_deleted=False).select_related('wallet', 'wallet__investor')
+    if not assets:
+        return
+    
     assets_by_symbol = defaultdict(list)
     
     for asset in assets:
