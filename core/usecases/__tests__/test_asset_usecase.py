@@ -3,10 +3,12 @@ from core.usecases.asset_usecase import create_asset, delete_asset, edit_asset, 
 from core.usecases.investor_usecase import create_investor
 from db.models import Asset
 
+
 class AssetsTestCase(TestCase):
     def setUp(self) -> None:
         self.investor = create_investor('john', 'doe', '11999999999', 'email@email.com', 'abcdfg123')
         self.wallet_id = self.investor.wallet_set.get().id
+
 
 class CreateAssetTests(AssetsTestCase):
     def setUp(self) -> None:
@@ -41,7 +43,6 @@ class CreateAssetTests(AssetsTestCase):
         
         self.assertEqual(f"Symbol: {data['symbol']} not valid, options: ITSA4, TAEE4, BBSE3", str(e.exception))
 
-
     def test_error_when_try_create_symbol_again(self):
         data = {
             'wallet_id': self.wallet_id,
@@ -55,6 +56,7 @@ class CreateAssetTests(AssetsTestCase):
             create_asset(**data)
         
         self.assertEqual(f"Symbol: {data['symbol']} already created", str(e.exception))
+
 
 class GetAssetsTests(AssetsTestCase):
     def test_should_return_all_assets(self):
