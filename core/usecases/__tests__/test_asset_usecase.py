@@ -145,3 +145,7 @@ class DeleteAsset(AssetsTestCase):
             delete_asset(invalid_id, self.wallet_id)
         
         self.assertEqual('Asset does not exists', str(e.exception))
+
+
+class getAssetsOnTargetPrices(AssetsTestCase):
+    ...
