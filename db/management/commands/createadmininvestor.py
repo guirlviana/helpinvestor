@@ -10,3 +10,4 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument('name', type=str, help='Investor name')
+        parser.add_argument('last_name', type=str, help='Investor last_name')
