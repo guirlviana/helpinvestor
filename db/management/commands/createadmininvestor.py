@@ -12,4 +12,5 @@ class Command(BaseCommand):
         parser.add_argument('name', type=str, help='Investor name')
         parser.add_argument('last_name', type=str, help='Investor last_name')
         parser.add_argument('email', type=str, help='Investor email')
+        parser.add_argument('password', type=str, help='Investor password')
         
