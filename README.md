@@ -99,9 +99,9 @@ python manage.py runserver
 | Async Task for quotes | Done   |
 | SMS notifications | Done |
 | Phone Validator | Done  |
-| Update/Delete Asset | Done  |
-| Update Investor | To-do  |
 | Tests cover 100% | Doing  |
+| Dockerization | Doing  |
+
 | CI/CD for deploy | To-do  |
 
 
