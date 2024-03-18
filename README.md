@@ -101,7 +101,6 @@ python manage.py runserver
 | Phone Validator | Done  |
 | Tests cover 100% | Doing  |
 | Dockerization | Doing  |
-
 | CI/CD for deploy | To-do  |
 
 
