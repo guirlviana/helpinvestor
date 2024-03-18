@@ -7,3 +7,6 @@ from core.usecases.investor_usecase import create_investor
 
 class Command(BaseCommand):
     help = 'Create an admin investor, admin investor can get live quote prices'
+
+    def add_arguments(self, parser):
+        parser.add_argument('name', type=str, help='Investor name')
