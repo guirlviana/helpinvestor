@@ -33,4 +33,5 @@ class Command(BaseCommand):
             User.objects.filter(id=new_investor.user_id).update(is_staff=True)
         except Exception as e:
             self.stdout.write(self.style.ERROR(str(e)))
-        
+        else:
+            self.stdout.write(self.style.SUCCESS('Successfully created admin investor!'))
