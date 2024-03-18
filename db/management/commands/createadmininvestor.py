@@ -22,3 +22,15 @@ class Command(BaseCommand):
             self.stdout.write(self.style.ERROR('Invalid params'))
         
         validated_data = investor.validated_data
+        try:
+            new_investor = create_investor(
+                name=validated_data['name'],
+                last_name=validated_data['last_name'],
+                phone=validated_data['phone'],
+                email=validated_data['email'],
+                password=validated_data['password']
+            )
+            User.objects.filter(id=new_investor.user_id).update(is_staff=True)
+        except Exception as e:
+            self.stdout.write(self.style.ERROR(str(e)))
+        
