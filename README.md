@@ -94,13 +94,13 @@ python manage.py runserver
 
 | desc.           | status |
 |-----------------|--------|
-| Create Investor | Done   |
-| Create Asset    | Done   |
-| Async Task for quotes | Done   |
-| SMS notifications | Done |
-| Phone Validator | Done  |
-| Tests cover 100% | Doing  |
-| Dockerization | Doing  |
+| Create Investor | ✔️   |
+| Create Asset    | ✔️   |
+| Async Task for quotes | ✔️   |
+| SMS notifications | ✔️ |
+| Phone Validator | ✔️  |
+| Tests | ✔️  |
+| Dockerization | ✔️  |
 | CI/CD for deploy | To-do  |
 
 
