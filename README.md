@@ -83,6 +83,15 @@ SECRET_KEY='django-insecure-c=3jl88ulheb!jv6w_)1l(6b7nge527vza4^)hofolc43f1+wh'
 ASSETS_API_KEY = '123123123' # get your key here: https://www.alphavantage.co/
 ```
 
+You can run using Docker as well
+
+```
+docker build -t helpinvestor .
+```
+```
+docker run -d -p 8000:8000 helpinvestor
+```
+
 <h3>Starting</h3>
 
 ```bash
