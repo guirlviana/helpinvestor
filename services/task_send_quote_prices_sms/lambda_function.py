@@ -1,7 +1,8 @@
 import boto3
 import requests
 
-ADMIN_EMAIL='pitoco@gmail.com'
+# Change the data for your admin investor account
+ADMIN_EMAIL='support@helpinvestor.com'
 ADMIN_PASSWORD='123456'
 URL="http://127.0.0.1:8000"
 
