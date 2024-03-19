@@ -3,6 +3,7 @@
 <p align="center">
  <a href="#technologies">Technologies</a> • 
 <a href="#architecture">Architecture</a> •
+ <a href="#routes">Routes</a> •
  <a href="#started">Getting Started</a> • 
  <a href="#future">Features, suggestions and the future</a> •
  <a href="#warnings">Warnings</a>
@@ -12,6 +13,15 @@
     <b>Add your asset from Brazilian stock exchange<br> set a buy and sell price.
 When the price targets<br> we going to send you a notification</b>
 </p>
+
+<p align="center">
+  <img src="https://github.com/guirlviana/helpinvestor/assets/65058505/b05b0253-ba69-4f44-a677-3f5049489573" alt="Screenshot" />
+</p>
+
+<p align="center">
+ For get a live demo, check the <a href="#routes">Routes</a> and consider the <a href="#warnings">Warnings</a>
+</p>
+
 
 <h2 id="technologies">💻 Technologies</h2>
 
@@ -42,6 +52,11 @@ When the price targets<br> we going to send you a notification</b>
   - services/
     - *connects with third party system*
 ```
+
+<h2 id="routes">🛣️ Routes</h2>
+
+
+
 <h2 id="started">⏲️ Getting started</h2>
 
 The app are running with `Python 3.10.12`
