@@ -170,6 +170,8 @@ ASSETS_API_KEY = '123123123' # get your key here: https://www.alphavantage.co/
 
 You can run using Docker as well
 
+Change the ENV's in `Dockerfile` using `.env.example` as reference, after run
+
 ```
 docker build -t helpinvestor .
 ```
