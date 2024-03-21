@@ -1,5 +1,5 @@
 from django.urls import path
-from api import investor_api, asset_api
+from api import investor_api, asset_api, home_api
 from rest_framework.authtoken import views
 
 assets_urls = [
@@ -10,6 +10,7 @@ assets_urls = [
 ]
 
 urlpatterns = [
+    path('', home_api.welcome),
     path('api-token-auth/', views.obtain_auth_token),
     path('investor/', investor_api.create_user),
     path('get-share-prices/', asset_api.get_share_prices),
