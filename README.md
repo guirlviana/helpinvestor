@@ -57,7 +57,7 @@ When the price targets<br> we going to send you a notification</b>
 
 URL: http://34.196.116.240
 
-<h3>POST /investor</h3>
+<h3>POST /investor/</h3>
 
 **REQUEST**
 ```json
@@ -69,7 +69,7 @@ URL: http://34.196.116.240
     "password": "123456"
 }
 ```
-<h3>POST /api-token-auth</h3>
+<h3>POST /api-token-auth/</h3>
 
 **REQUEST**
 ```json
@@ -93,14 +93,14 @@ Key: Authorization
 Value: Token OwoMRHsaQwyAgVoc3OXmL1JhMVUYXGGBbCTK0GBgiYitwQwjf0gVoBmkbuyy0pSi
 ```
 
-<h3>POST /create-asset</h3>
+<h3>POST /create-asset/</h3>
 
 **REQUEST**
 ```json
 {"symbol": "ITSA4", "buy_price": 11.86, "sale_price": 12.06}
 ```
 
-<h3>PUT /edit-asset/[id: int]</h3>
+<h3>PUT /edit-asset/[id: int]/</h3>
 
 Will change only the fields passed
 
@@ -109,7 +109,7 @@ Will change only the fields passed
 {"buy_price": 11.81, "sale_price": 12.01}
 ```
 
-<h3>GET /get-assets</h3>
+<h3>GET /get-assets/</h3>
 
 **RESPONSE**
 ```json
@@ -125,7 +125,7 @@ Will change only the fields passed
 }
 ```
 
-<h3>DELETE /delete-asset[id: int]</h3>
+<h3>DELETE /delete-asset[id: int]/</h3>
 
 <h2 id="started">⏲️ Getting started</h2>
 
