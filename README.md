@@ -51,6 +51,8 @@ When the price targets<br> we going to send you a notification</b>
     - *our database models*
   - services/
     - *connects with third party system*
+    - task_send_quote_prices_sms
+     - *python code scheduled for periodic execution on Lambda*
 ```
 
 <h2 id="routes">🛣️ Routes</h2>
