@@ -199,7 +199,7 @@ python manage.py runserver
 | Phone Validator | ✔️  |
 | Tests | ✔️  |
 | Dockerization | ✔️  |
-| CI/CD for deploy | ⏰  |
+| CI/CD for unit tests | ✔️  |
 
 
 Do you want register a new feature or a bug? open a `pull-request` or contact me at [gvianadev.com](https://gvianadev.com)
