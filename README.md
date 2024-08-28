@@ -25,6 +25,7 @@ When the price targets<br> we going to send you a notification</b>
 
 <h2 id="technologies">💻 Technologies</h2>
 
+- Python
 - Django
 - Django Rest Framework
 - AWS Lambda
